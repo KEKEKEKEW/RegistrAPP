@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/login"></ion-back-button>
+      </ion-buttons>
+      <!-- <ion-title size="large" slot="end">SkeletonApp</ion-title> -->
+    </ion-toolbar>
+  </ion-header>
+  <div style="display: flex; align-items: center; justify-content: center;">
+    <h1>Bienvenido!</h1>
+  </div>
+  <div id="username"> Usuario: </div>
+  <div style="display: flex; align-items: center; justify-content: center;">
+    <h2>Informacion adicional</h2>
+  </div>
+  <br><br>
+
+  <ion-card>
+
+  
+    <ion-card-content>
+    <form [formGroup]="formularioInicio">  
+        <ion-label>Nombre</ion-label><ion-input formControlName="nombre"  placeholder="Ingrese nombre"></ion-input>
+        <br>
+        <ion-label>Apellido</ion-label><ion-input formControlName="apellido" placeholder="Ingrese apellido"></ion-input>
+        <br>
+        <ion-select formControlName="educacion" label="Nivel educacional" placeholder="seleccione nivel" >
+          <ion-select-option value="media">Media</ion-select-option>
+          <ion-select-option value="tecnica">Tecnica</ion-select-option>
+          <ion-select-option value="universitaria">Universitaria</ion-select-option>
+        </ion-select>
+      <br>
+    </form>
+      <ion-label>Fecha de nacimiento</ion-label>
+      <br><br>
+      <ion-datetime-button datetime="datetime"></ion-datetime-button>
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+      <ion-datetime [showDefaultButtons]="true" id="datetime" presentation="date"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <br>
+    </ion-card-content>
+  
+
+
+  </ion-card> 
+<div style="display: flex; align-items: center; justify-content: center;">
+  <ion-button (click)="limpiar()">Limpiar</ion-button>
+  <ion-button (click)="mostrar()">Mostrar</ion-button>
+</div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title style="font-size: small;">
+      App desarrollada por: Sewen
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

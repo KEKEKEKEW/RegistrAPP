@@ -1,0 +1,7 @@
+{
+  "name": "Peppi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
