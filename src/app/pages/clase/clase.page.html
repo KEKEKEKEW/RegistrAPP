@@ -19,7 +19,7 @@
       <ion-list lines="none">
         <ion-item>
           <ion-label position="stacked">Nombre Profesor: </ion-label>
-          <ion-input value="Nombre del Profesor" disabled></ion-input>
+          <ion-input *ngIf="profesor" class="profesor">{{ profesor }} disabled></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Nombre Clase:</ion-label>
@@ -27,8 +27,17 @@
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Sala:</ion-label>
-          <ion-input value="Laboratorio L3" disabled></ion-input>
+          <ion-input *ngIf="sala" class="sala">{{ sala }} disabled></ion-input>
         </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Dia:</ion-label>
+          <ion-input *ngIf="dia" class="dia">{{ dia }} disabled></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Hora:</ion-label>
+          <ion-input *ngIf="hora" class="hora">{{ hora }} disabled></ion-input>
+        </ion-item>
+
         <ion-item lines="none">
           <ion-label position="stacked" class="label">Nombre Alumno:</ion-label>
           <ion-input class="input" disabled>{{ currentUser }}</ion-input>
