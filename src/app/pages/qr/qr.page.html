@@ -13,15 +13,5 @@
       <video #videoElement autoplay="true"></video>
     </div>
 
-    <div *ngIf="userData && !isScanning">
-      <h2>Información de la clase:</h2>
-      <p>Nombre: {{ userData.nombre }}</p>
-      <p>Apellido: {{ userData.apellido }}</p>
-      <p>Rut: {{ userData.rut }}</p>
-      <p>Carrera: {{ userData.carrera }}</p>
-      <ul>
-        <li *ngFor="let dato of userData.datosEscaneados">{{ dato }}</li>
-      </ul>
-    </div>
   </div>
 </ion-content>

@@ -6,13 +6,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'login',
@@ -34,6 +34,50 @@ const routes: Routes = [
     path: 'password',
     loadChildren: () => import('./pages/password/password.module').then( m => m.PasswordPageModule)
   },
+  {
+    path: 'error404',
+    loadChildren: () => import('./pages/error404/error404.module').then( m => m.Error404PageModule)
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./pages/error404/error404.module').then( m => m.Error404PageModule)
+  },
+  {
+    path: 'login',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'registro',
+    redirectTo: 'registro',
+    pathMatch: 'full'
+  },
+  {
+    path: 'qr',
+    redirectTo: 'qr',
+    pathMatch: 'full'
+  },
+  {
+    path: 'clase',
+    redirectTo: 'clase',
+    pathMatch: 'full'
+  },
+  {
+    path: 'password',
+    redirectTo: 'password',
+    pathMatch: 'full'
+  },
+  {
+    path: 'error404',
+    redirectTo: 'error404',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: 'error404',
+    pathMatch: 'full'
+  },
+
 ];
 
 @NgModule({
