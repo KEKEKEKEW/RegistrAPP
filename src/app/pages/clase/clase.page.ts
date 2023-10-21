@@ -13,12 +13,15 @@ export class ClasePage implements OnInit {
   hora: string | null = null;
   sala: string | null = null;
   dia: string | null = null;
+  coordinatesText: string = '';
+
 
 
 
   constructor(private geolocation: Geolocation) { }
 
   ngOnInit() {
+    
     this.loadCurrentUser().then((user) => {
       this.currentUser = user;
       const userDataString = localStorage.getItem('usuario');
@@ -38,6 +41,7 @@ export class ClasePage implements OnInit {
           this.dia = claseData.dia;
         }
       }
+      this.getCoordinates();
 
     });
   }
@@ -60,7 +64,7 @@ export class ClasePage implements OnInit {
     this.geolocation.getCurrentPosition().then((resp) => {
       const latitude = resp.coords.latitude;
       const longitude = resp.coords.longitude;
-      console.log(`Latitud: ${latitude}, Longitud: ${longitude}`);
+      this.coordinatesText = `Latitud: ${latitude}, Longitud: ${longitude}`;
     }).catch((error) => {
       console.error('Error al obtener la ubicación', error);
     });

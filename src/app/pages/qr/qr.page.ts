@@ -12,9 +12,13 @@ export class QRPage implements OnInit {
   isScanning: boolean = false;
 
   @ViewChild('videoElement', { static: true }) videoElement: ElementRef | undefined;
+  @ViewChild('canvas', { static: true }) canvasElement: ElementRef | undefined;
+  @ViewChild('capturedImage', { static: true }) capturedImage: ElementRef | undefined;
+
 
   constructor() {
     this.codeReader = new BrowserMultiFormatReader();
+    
   }
 
   ngOnInit() {
@@ -39,6 +43,17 @@ export class QRPage implements OnInit {
           }
           localStorage.setItem('qrCode', JSON.stringify(qrCode));
           this.isScanning = false;
+          
+          if (this.videoElement && this.canvasElement && this.capturedImage) {
+            const video = this.videoElement.nativeElement;
+            const canvas = this.canvasElement.nativeElement;
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            const capturedImage = canvas.toDataURL('image/png');
+            // Ahora puedes hacer lo que quieras con capturedImage
+            this.capturedImage.nativeElement.src = capturedImage;
+          }
         })
         .catch((error: any) => {
           console.error(error);
