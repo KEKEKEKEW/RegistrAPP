@@ -31,6 +31,21 @@
             <ion-label>rut(sin puntos y con codigo verificador)</ion-label>
             <ion-input formControlName="rut" aria-placeholder="rut" type="text" maxlength="10" id="rut" name="rut"></ion-input>
           </form>
+          <ion-list>
+            <ion-item>
+              <ion-select (ionChange)="cargarComuna()" placeholder="Seleccione" [(ngModel)]="regionSel">
+                <ion-select-option [value]="r.id" *ngFor="let r of regiones">{{r.nombre}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+          
+          <ion-list>
+            <ion-item>
+              <ion-select  placeholder="Seleccione" [(ngModel)]="comunaSel">
+                <ion-select-option [value]="r.id" *ngFor="let r of comunas">{{r.nombre}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
           </ion-card-content>
         </ion-card>
         <div style="display: flex; align-items: center; justify-content: center;">

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators,FormBuilder } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { LocationService } from 'src/app/services/location.service';
+import { Region } from 'src/app/models/region';
 
 @Component({
   selector: 'app-registro',
@@ -8,10 +10,15 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage implements OnInit {
+  
+  regiones:Region[]=[];
+  comunas:any[]=[];
+  regionSel:number = 0;
+  comunaSel:number = 0;
 
   formularioRegistro: FormGroup;
 
-  constructor(public fb: FormBuilder,public alertController: AlertController) { 
+  constructor(public fb: FormBuilder,public alertController: AlertController,private locationService:LocationService) { 
     this.formularioRegistro = this.fb.group({
       'user': new FormControl("",Validators.required),
       'password': new FormControl("",Validators.required),
@@ -22,7 +29,27 @@ export class RegistroPage implements OnInit {
 
   ngOnInit() {
   }
-  
+
+
+  async cargarComuna(){
+    try {
+      const req = await this.locationService.getComuna(this.regionSel);
+      this.comunas = req.data;
+    } catch (error:any) {
+      console.log("ERROR", error);
+      
+    }
+  }
+
+  async cargarRegion(){
+    try {
+      const req = await this.locationService.getRegion();
+      this.regiones = req.data;
+      console.log("REGIONES",this.regiones);
+    } catch (error) {
+      
+    }
+  }
   async guardar(){
 
     var f = this.formularioRegistro.value;
