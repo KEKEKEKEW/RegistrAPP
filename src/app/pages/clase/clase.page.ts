@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-clase',
@@ -15,13 +16,13 @@ export class ClasePage implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private geolocation: Geolocation) { }
 
   ngOnInit() {
     this.loadCurrentUser().then((user) => {
       this.currentUser = user;
       const userDataString = localStorage.getItem('usuario');
-      const claseDataString = localStorage.getItem('clases');
+      const claseDataString = localStorage.getItem('qrCode');
       if (userDataString) {
         const userData = JSON.parse(userDataString);
         if (userData.rut) {
@@ -52,6 +53,16 @@ export class ClasePage implements OnInit {
       
 
       resolve(currentUser);
+    });
+  }
+  
+  getCoordinates() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      const latitude = resp.coords.latitude;
+      const longitude = resp.coords.longitude;
+      console.log(`Latitud: ${latitude}, Longitud: ${longitude}`);
+    }).catch((error) => {
+      console.error('Error al obtener la ubicación', error);
     });
   }
   

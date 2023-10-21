@@ -8,10 +8,9 @@
 <ion-content>
   <div id="container" class="ion-padding">
     <ion-button expand="full" (click)="openScanner()">Abrir Escáner de QR</ion-button>
-
     <div id="videoContainer" [ngClass]="{ 'hide-result': isScanning }">
       <video #videoElement autoplay="true"></video>
     </div>
-
   </div>
+  <ion-button style="display: flex; justify-content: center;" routerLink="/clase">Registrar Clase</ion-button>
 </ion-content>

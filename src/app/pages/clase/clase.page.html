@@ -18,24 +18,19 @@
     <ion-card-content>
       <ion-list lines="none">
         <ion-item>
-          <ion-label position="stacked">Nombre Profesor: </ion-label>
-          <ion-input *ngIf="profesor" class="profesor">{{ profesor }} disabled></ion-input>
+          <ion-label *ngIf="profesor" class="profesor">{{ profesor }}</ion-label>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">Nombre Clase:</ion-label>
           <ion-input value="Programación" disabled></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">Sala:</ion-label>
-          <ion-input *ngIf="sala" class="sala">{{ sala }} disabled></ion-input>
+          <ion-label *ngIf="sala" class="sala">{{ sala }}</ion-label>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">Dia:</ion-label>
-          <ion-input *ngIf="dia" class="dia">{{ dia }} disabled></ion-input>
+          <ion-label *ngIf="dia" class="dia">{{ dia }}</ion-label>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">Hora:</ion-label>
-          <ion-input *ngIf="hora" class="hora">{{ hora }} disabled></ion-input>
+          <ion-label *ngIf="hora" class="hora">{{ hora }}</ion-label>
         </ion-item>
 
         <ion-item lines="none">
@@ -48,6 +43,8 @@
         </ion-item>
       </ion-list>
     </ion-card-content>
+
+    <ion-button (click)="getCoordinates()">coords</ion-button>
   </ion-card>
   
 
