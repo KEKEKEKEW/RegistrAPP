@@ -28,6 +28,7 @@ export class RegistroPage implements OnInit {
   }
 
   ngOnInit() {
+    this.cargarRegion();
   }
 
 
