@@ -10,6 +10,7 @@ export class QRPage implements OnInit {
   qrResult: string = '';
   codeReader: BrowserMultiFormatReader;
   isScanning: boolean = false;
+  qrScanned: boolean = false;
 
   @ViewChild('videoElement', { static: true }) videoElement: ElementRef | undefined;
   @ViewChild('canvas', { static: true }) canvasElement: ElementRef | undefined;
@@ -43,6 +44,7 @@ export class QRPage implements OnInit {
           }
           localStorage.setItem('qrCode', JSON.stringify(qrCode));
           this.isScanning = false;
+          this.qrScanned = true;
           
           if (this.videoElement && this.canvasElement && this.capturedImage) {
             const video = this.videoElement.nativeElement;

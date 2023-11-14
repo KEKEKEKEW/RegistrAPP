@@ -3,6 +3,7 @@ import { FormGroup,FormControl,Validators,FormBuilder } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { LocationService } from 'src/app/services/location.service';
 import { Region } from 'src/app/models/region';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -18,7 +19,7 @@ export class RegistroPage implements OnInit {
 
   formularioRegistro: FormGroup;
 
-  constructor(public fb: FormBuilder,public alertController: AlertController,private locationService:LocationService) { 
+  constructor(private router: Router,public fb: FormBuilder,public alertController: AlertController,private locationService:LocationService) { 
     this.formularioRegistro = this.fb.group({
       'user': new FormControl("",Validators.required),
       'password': new FormControl("",Validators.required),
@@ -63,8 +64,9 @@ export class RegistroPage implements OnInit {
       });
       await alert.present();
       return;
-    }
-    var usuario ={
+    } else {
+      
+      var usuario ={
       nombre: f.user,
       password: f.password,
       rut: f.rut
@@ -72,6 +74,8 @@ export class RegistroPage implements OnInit {
     localStorage.setItem('usuario',JSON.stringify(usuario));
 
     this.formularioRegistro.reset();
+    this.router.navigate(['/login']);}
+    
   }
   
 

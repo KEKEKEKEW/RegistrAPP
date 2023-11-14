@@ -16,5 +16,5 @@
   <div id="container" class="ion-padding">
     <img #capturedImage src="" alt="Captured Image">
   </div>
-  <ion-button style="display: flex; justify-content: center;" routerLink="/clase">Registrar Clase</ion-button>
+  <ion-button style="display: flex; justify-content: center;" [routerLink]="qrScanned ? '/clase' : null">Registrar Clase</ion-button>
 </ion-content>
